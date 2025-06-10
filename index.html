@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  body {
+  
+  
+  
+		//background: linear-gradient(to right, #ff7e5f, #feb47b, #86fde8);
+		color: white;
+		display: grid;
+		grid-template-columns: repeat(2, 2fr);
+		center:center:
+		overflow: hidden;
+		margin: 0;
+
+		/background-image:
+       // url('IMAGES/gold1.avif'),
+		//linear-gradient(to top, black 50%, yellow,red, orange, yellow,black 75%);
+
+		background-color: black;
+		background-image: url('IMAGES/gold1.avif'); /* Replace with your image */
+		background-repeat: repeat-x;             /* Repeat horizontally */
+		background-position: bottom left;       /* Anchor to bottom-right */
+		background-attachment: scroll;           /* Optional: scroll with page */		
+
+  }
+
+  
+    .c90200 {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			padding-left: 5%;
+			padding-Right: 1%;
+			gap: 0.2%;
+	}
+	.c90300 {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			Right: -100px;
+			gap: 0.2%;
+	}
+
+    .DivSet {
+			top: -2px;
+			width:20vw;
+			height:20vh;
+			border:none;
+			text-align: center;
+			position:relative;
+			overflow: hidden;
+    }
+
+	iframe {
+			width:100%;
+			height:100%;
+			border: 0px; 
+			overflow: hidden;
+
+	}
+	.refresh-btn {
+			animation: spin 4s linear infinite;
+			position: absolute;
+			top: 0%;
+			right: 0px;
+			z-index:10px;
+			width: 50px;
+			height: 62px;
+			padding-right: 15px;
+			background-image: url('IMAGES/refresh2.ico'); 
+			background-size: cover;
+			animation: rotateYLeft 10s linear infinite;
+			transform-style: preserve-3d;
+	}
+	@keyframes rotateYLeft {
+      from {
+        transform: rotateY(0deg);
+      }
+      to {
+        transform: rotateY(-360deg); /* Right to left */
+      }
+    }
+	
+	.refresh-btn:hover {
+			right: 0%;
+			height: 48%;
+			width: 25%;
+			z-index: 15;
+			transition: background 10s ease;
+			cursor: pointer;
+		
+	}
+	.DivLabel{
+			
+			background-color: rgba(0,0, 0, 0.5); 
+			//background: linear-gradient(to right,rgba(255, 0, 0, 0.7), rgba(255, 215, 0, 0.7),rgba(255, 165, 0, 0.7));
+			//background: linear-gradient(45deg,rgba(255, 0, 0, 0.5), rgba(255, 215, 0, 0.5),rgba(255, 0, 0, 0.5));
+			color: gold;
+			//border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+			padding: 5px;
+			//left :35.5%;
+			top: 0%;
+			z-index 12;
+			position: absolute;
+	}
+
+  </style>
+</head>
+<body>
+
+<div class="c90200" id="902Container"></div>
+<div class="c90300" id="903Container"></div>
+
+<script>
+var n = 0;
+var k = 0;
+var iSrcLogo = "LOGO.html";
+const AMLink = "http://10.18.20.251:5080/LiveApp/play.html?id=";
+/* ARRAYS */
+
+const url902 = 
+	   [
+		'HN009',
+		'HN008',
+		'HN007',
+		'HN003',
+		'HN005',
+		'HN006',
+		'HN002',
+		'HN001',
+		'HN020',
+	   ]
+
+
+const VIP902 = 
+	   [
+		'HN009',
+		'HN008',
+		'HN007',
+		'HN003',
+		'HN005',
+		'HN006',
+		'HN002',
+		'HN001',
+		'HN020',
+	   ]
+		
+const VIP903 =
+		[
+		'HN013',
+		'HN012',
+		'HN011',
+		'HN010',
+		'HN016',
+		'HN015',
+		'HN014',
+		'HN018',
+		'HN019',
+		]
+
+  
+/* 902 SETTINGS */
+  const Con902 = document.getElementById('902Container');
+  const Con902Count = 10; 
+
+  for (let i = 1; i <= Con902Count; i++) {
+    n++;
+
+    const DivSet = document.createElement('div');
+	const DivLabel = document.createElement('div');
+    const iframe = document.createElement('iframe');
+	DivSet.className = "DivSet";
+	
+	if (i==9){
+
+	iframe.src = iSrcLogo;
+	
+	DivSet.append(iframe);
+    Con902.appendChild(DivSet);
+	n= n-1;
+	}else{
+
+	DivLabel.innerText = `9020${n} - ${VIP902[n-1]}`;
+	DivLabel.className = "DivLabel";
+	iframe.id = `ifrm ${n}`;
+
+	iframe.src = AMLink+url902[n-1];
+
+    DivSet.appendChild(DivLabel);
+	DivSet.append(iframe);
+    Con902.appendChild(DivSet);
+	iframe.setAttribute("AllowFullScreen",true);
+	}
+  }
+  
+/* 903 SETTINGS */
+  const Con903 = document.getElementById('903Container');
+  const Con903Count = 10; 
+
+  for (let i = 1; i <= Con903Count; i++) {
+    const DivSet = document.createElement('div');
+	const DivLabel = document.createElement('div');
+    const iframe = document.createElement('iframe');
+	DivSet.className = "DivSet";
+	
+	if (i==10){
+	//iframe.src = "VIDEO.html";
+	iframe.src = iSrcLogo;
+	
+	DivSet.append(iframe);
+	Con903.appendChild(DivSet);
+	}else{
+    DivLabel.innerText = `9030${i} - ${VIP903[i-1]}`;
+	DivLabel.className = "DivLabel";
+	iframe.id = `ifrm ${i}`;
+	iframe.src = AMLink+"9030"+i;
+
+
+    DivSet.appendChild(DivLabel);
+	DivSet.append(iframe);
+    Con903.appendChild(DivSet);
+	iframe.setAttribute("AllowFullScreen",true);
+	}
+  }  
+  
+        function addRefreshButtons() {
+            let iframes = document.querySelectorAll("iframe"); // Select all iframes
+
+            iframes.forEach((iframe, index) => {
+			k++;
+			    let button = document.createElement("div"); // Create button
+                button.className = "refresh-btn";
+				
+                // Set event to refresh corresponding iframe
+                button.onclick = function() {
+                    iframe.src = iframe.src;
+                };
+				if(k==9 || k==20){}else{
+					iframe.parentNode.insertBefore(button, iframe);
+				}
+            });
+        }
+
+        // Call function to add refresh buttons to all iframes
+        addRefreshButtons();
+</script>
+
+</body>
+</html>
